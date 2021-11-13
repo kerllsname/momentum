@@ -1,5 +1,5 @@
 export default function initializeClock() {
-  const clock = document.querySelector('.time');
+  const clock = document.querySelector(".time");
 
   addClock(clock);
   setDayTime();
@@ -10,11 +10,11 @@ function addClock(clock) {
 
   setInterval(() => {
     addClock(clock);
-  }, 100);
+  }, 500);
 }
 
 function setDayTime() {
-  localStorage.setItem('dayTime', getDayTime());
+  localStorage.setItem("dayTime", getDayTime());
 
   setInterval(() => {
     setDayTime();
@@ -25,12 +25,12 @@ export function getDayTime() {
   const currentTime = new Date().getHours();
 
   if (currentTime >= 6 && currentTime < 12) {
-    return 'morning'
+    return "morning";
   } else if (currentTime >= 12 && currentTime < 18) {
-    return 'afternoon'
+    return "afternoon";
   } else if (currentTime >= 18 && currentTime <= 23) {
-    return 'evening'
+    return "evening";
   } else if (currentTime >= 0 && currentTime < 7) {
-    return 'night'
+    return "night";
   }
 }

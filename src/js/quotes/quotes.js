@@ -1,9 +1,9 @@
 export default function initializeQuotes() {
-  const quoteChanger = document.querySelector('.change-quote');
+  const quoteChanger = document.querySelector(".change-quote");
 
   generateQuote(true);
 
-  quoteChanger.addEventListener('click', () => generateQuote(false));
+  quoteChanger.addEventListener("click", () => generateQuote(false));
 }
 
 function getRandomNumber() {
@@ -11,12 +11,12 @@ function getRandomNumber() {
 
   setIndex(num);
 
-  return num
+  return num;
 }
 
 async function generateQuote(isRandom) {
-  const quote = document.querySelector('.quote');
-  const author = document.querySelector('.author');
+  const quote = document.querySelector(".quote");
+  const author = document.querySelector(".author");
   let num = getQuoteIndex(isRandom);
   const quotes = await getQuotes();
 
@@ -30,21 +30,20 @@ function getQuoteIndex(isRandom) {
   if (isRandom) {
     num = getRandomNumber();
   } else {
-    num = Number(localStorage.getItem('quoteIndex'));
-    num = num == 7 ? 0 : num + 1; 
+    num = Number(localStorage.getItem("quoteIndex"));
+    num = num == 7 ? 0 : num + 1;
     setIndex(num);
   }
 
-  return num
+  return num;
 }
 
 async function getQuotes() {
-  const quotes = ('./js/quotes/rusQuotes.json');
+  const quotes = "./js/quotes/rusQuotes.json";
 
-  return await fetch(quotes)
-    .then(res => res.json())
+  return await fetch(quotes).then((res) => res.json());
 }
 
 function setIndex(index) {
-  localStorage.setItem('quoteIndex', index);
+  localStorage.setItem("quoteIndex", index);
 }
